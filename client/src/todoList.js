@@ -1,18 +1,18 @@
 import web3 from './web3'
 
-const address = '0x6C0a73eACDf1B6583661556D5CC062D14EdA2f1b'
+const address = '0xBCCeCd58E6CA8267717Ab0dFA502f4522c46f17A'
 
 const abi = [
   { inputs: [], stateMutability: 'nonpayable', type: 'constructor' },
   {
-    inputs: [[Object]],
+    inputs: [{ internalType: 'string', name: 'description', type: 'string' }],
     name: 'addTodo',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
   {
-    inputs: [[Object]],
+    inputs: [{ internalType: 'uint256', name: 'index', type: 'uint256' }],
     name: 'completeTodo',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -21,19 +21,37 @@ const abi = [
   {
     inputs: [],
     name: 'getUserTodos',
-    outputs: [[Object]],
+    outputs: [
+      {
+        components: [
+          { internalType: 'string', name: 'description', type: 'string' },
+          { internalType: 'bool', name: 'completed', type: 'bool' },
+          { internalType: 'address', name: 'owner', type: 'address' },
+        ],
+        internalType: 'struct TodoList.Todo[]',
+        name: '',
+        type: 'tuple[]',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [[Object]],
+    inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'todos',
-    outputs: [[Object], [Object], [Object]],
+    outputs: [
+      { internalType: 'string', name: 'description', type: 'string' },
+      { internalType: 'bool', name: 'completed', type: 'bool' },
+      { internalType: 'address', name: 'owner', type: 'address' },
+    ],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [[Object], [Object]],
+    inputs: [
+      { internalType: 'uint256', name: 'index', type: 'uint256' },
+      { internalType: 'string', name: 'newDescription', type: 'string' },
+    ],
     name: 'updateTodoDescription',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -42,7 +60,7 @@ const abi = [
   {
     inputs: [],
     name: 'user',
-    outputs: [[Object]],
+    outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },

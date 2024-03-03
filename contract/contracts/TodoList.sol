@@ -32,14 +32,14 @@ contract TodoList {
 
     // 할 일 완료 함수: 해당 인덱스의 할 일을 완료 처리합니다.
     function completeTodo(uint index) public onlyOwner(index) {
-        require(index > todos.length, "Invalid index");
+        require(index < todos.length, "Invalid index");
         // 할 일 완료 업데이트
         todos[index].completed = true;
     }
 
     // 할 일 설명 업데이트 함수: 해당 인덱스의 할 일의 설명을 업데이트합니다.
     function updateTodoDescription(uint index, string memory newDescription) public onlyOwner(index) {
-        require(index > todos.length, "Invalid index");
+        require(index < todos.length, "Invalid index");
         // 할 일 설명 업데이트
         todos[index].description = newDescription;
     }
